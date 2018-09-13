@@ -1,0 +1,264 @@
+/* COLOR PALETTE
+	=========================================================================
+Background gradient:
+#D8D5DB - gainsboro (default)
+#E5E1EE - platinum
+
+
+	=========================================================================*/
+
+/* BORDER-BOX
+	=========================================================================*/
+* {
+  box-sizing: border-box;
+}
+
+/* CLEARFIX
+	=========================================================================*/
+.clearfix:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+/* GLOBAL
+	=========================================================================*/
+body{
+	background: #C9EDDC;
+}
+/* TYPOGRAPHY
+	=========================================================================*/
+body{
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* HEADER
+	=========================================================================*/
+header > div{
+  padding: 10px;
+}
+
+.line{
+  width: 35%;
+  height: 3px;
+  max-width: 100px;
+  background: #38686A;
+  border-radius: 50px;
+}
+
+.line {
+  display: none;
+}
+
+.globe{
+  background-image: url(../img/globe.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 20%;
+  padding-bottom: 20%;
+  max-width: 80px;
+}
+
+.globe:hover{
+  background-image: url(../img/globe-color.png);
+}
+
+header p{
+  font-size: 30px;
+  font-weight: 200;
+  display: inline;
+  padding-bottom: 5px;
+  margin: 0 auto;
+  color: #38686A;
+  border-bottom: 3px solid #38686A;
+}
+
+.logo{
+  float: right;
+  width: 80%;
+  padding: 4%;
+}
+
+/* FOOTER
+	=========================================================================*/
+
+
+
+/* SINGLE MONTH CALENDAR
+	========================================================================*/
+
+.container{
+  margin: 5px;
+}
+
+h3{
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+}
+
+td, th {
+	border-left: 1px solid #999;
+	border-bottom: 1px solid #999;
+	background: #fff;
+	width: 120px;
+	padding: 10px 0;
+	text-align: center;
+}
+
+a.popup{
+	display: block;
+	text-decoration: none;
+  font-weight: 200;
+	color: #666;
+}
+
+table {
+  border-collapse:separate;
+  border:solid #999 1px;
+  border-radius:6px;
+  -moz-border-radius:6px;
+}
+
+th {
+	background: #666;
+	color: #fff;
+  border-top: none;
+}
+
+tr:last-child td{
+  border-bottom: none;
+}
+
+td:first-child, th:first-child {
+  border-left: none;
+}
+
+th:first-child{
+  border-radius:5px 0 0 0;
+  -moz-border-radius:5px 0 0 0;
+}
+
+th:last-child{
+  border-radius:0 5px 0 0;
+  -moz-border-radius:0 5px 0 0;
+}
+
+tr:last-child > td:first-child{
+  border-radius:0 0 0 5px;
+  -moz-border-radius:0 0 0 5px;
+}
+
+tr:last-child > td:last-child{
+  border-radius:0 0 5px 0;
+  -moz-border-radius:0 0 5px 0;
+}
+
+.other-month {
+	background: #eee;
+  color: #999;
+}
+
+/* POPUP BOX
+	=========================================================================*/
+.hover{
+    background:rgba(0,0,0,.4);
+    display:none;
+    height:100%;
+    position:fixed;
+    text-align:center;
+    top:0;
+    width:100%;
+    z-index:100;
+}
+
+.hover .helper{
+    display:inline-block;
+    height:100%;
+    vertical-align:middle;
+}
+
+.hover > div {
+    background-color: #fff;
+    box-shadow: 10px 10px 60px #555;
+    display: inline-block;
+    height: auto;
+    max-width: 551px;
+    min-height: 300px;
+    vertical-align: middle;
+    width: 90%;
+    position: relative;
+    border-radius: 8px;
+    padding: 15px 5%;
+}
+
+.popupCloseButton {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  opacity: 0.3;
+}
+.popupCloseButton:hover {
+  opacity: 1;
+}
+.popupCloseButton:before, .popupCloseButton:after {
+  position: absolute;
+  left: 10px;
+  content: ' ';
+  height: 20px;
+  width: 2px;
+  background-color: #333;
+}
+.popupCloseButton:before {
+  transform: rotate(45deg);
+}
+.popupCloseButton:after {
+  transform: rotate(-45deg);
+}
+
+.popup{
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+}
+
+
+/* FOR DESKTOP
+	=========================================================================*/
+@media only screen and (min-width: 500px){
+	body{
+		background: #C9EDDC;  /* fallback for old browsers */
+		background: -webkit-linear-gradient(to left, #D8D5DB, #C9EDDC);  /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to left, #D8D5DB, #C9EDDC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}	
+
+  header{
+    text-align: center;
+  }
+
+  header p{
+    font-size: 40px;
+    display: block;
+    border-bottom: 0;
+  }
+
+  .globe{
+    padding-bottom: 0;
+    height: 80px;
+  }
+
+  .logo{
+    float: none;
+    width: 100%;
+    padding: 10px;
+  }
+
+
+  .line{
+    display: inline-block;
+  }
+}
+
