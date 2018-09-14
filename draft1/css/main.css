@@ -160,6 +160,12 @@ tr:last-child > td:last-child{
   color: #999;
 }
 
+/* DAYS OF WEEK
+  =========================================================================*/
+.fullweekday {
+  display: none;
+}
+
 /* POPUP BOX
 	=========================================================================*/
 .hover{
@@ -256,9 +262,24 @@ tr:last-child > td:last-child{
     padding: 10px;
   }
 
-
   .line{
     display: inline-block;
+  }
+}
+
+
+/* WEEKDAY TRANSITION
+  =========================================================================*/
+@media only screen and (min-width: 860px){
+  .fullweekday{
+    display: inline;
+  }
+
+  .weekletter{
+    display: none;
+  }
+  table{
+    width: 100%;
   }
 }
 
