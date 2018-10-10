@@ -5,11 +5,42 @@
 		var now   = new Date();
 		var thismonth = now.getMonth();
 		var thisyear  = now.getYear() + 1900;
-		
+
 		var opts = {
 			month: thismonth,
 			year: thisyear
 		};
+		
+		//if query string is blank or incorrect, go to current month. Else, go to month in query string. If query string is partial, fill in blank parameter with current month or year
+		var url_string = window.location.href;
+		var url = new URL(url_string);
+		var urlMonthOriginal = url.searchParams.get("month");
+		var urlMonth = urlMonthOriginal - 1;
+		var urlYear = url.searchParams.get("year");
+		if ((urlMonthOriginal == null) && (urlYear == null)){
+			console.log('query string blank');
+		}
+		else if ((urlMonthOriginal !== null) && (urlMonthOriginal <= 0) || (urlMonthOriginal >= 13)){
+			console.log('invalid month');
+			console.log('urlMonth: ' + urlMonth + ', urlMonthOriginal: ' + urlMonthOriginal);
+		}
+		else if ((urlYear !== null) && (urlYear <= 2000) || (urlYear >= 2100)){
+			console.log('invalid year');
+		}
+		else if ((urlMonthOriginal !== null) && (urlYear !== null)){
+			console.log('not blank');
+			opts = {month: urlMonth, year: urlYear};
+		}
+		else if ((urlMonthOriginal !== null) && (urlYear == null)){
+			console.log('no year');
+			opts = {month: urlMonth, year: thisyear};
+		}
+		else if ((urlMonthOriginal == null) && (urlYear !== null)){
+			console.log('no month');
+			opts = {month: thismonth, year: urlYear};
+		};
+
+		
 		
 		$.extend(opts, params);
 		
@@ -28,22 +59,25 @@
 		
 			// next month
 			if (month == 11) {
-				var next_month = '<a href="?month=' + 1 + '&amp;year=' + (year + 1) + '" title="' + monthNames[0] + ' ' + (year + 1) + '">' + monthNames[0] + ' ' + (year + 1) + '</a>';
+				var next_month = '<a href="?month=' + 1 + '&amp;year=' + (year + 1) + '" title="' + monthNames[0] + ' ' + (year + 1) + '"><i style="font-size:24px" class="fa">&#8680;</i></a>';
 			} else {
-				var next_month = '<a href="?month=' + (month + 2) + '&amp;year=' + (year) + '" title="' + monthNames[month + 1] + ' ' + (year) + '">' + monthNames[month + 1] + ' ' + (year) + '</a>';
+				var next_month = '<a href="?month=' + (month + 2) + '&amp;year=' + (year) + '" title="' + monthNames[month + 1] + ' ' + (year) + '"><i style="font-size:24px" class="fa">&#8680;</i></a>';
 			}
 				
 			// previous month
 			if (month == 0) {
-				var prev_month = '<a href="?month=' + 12 + '&amp;year=' + (year - 1) + '" title="' + monthNames[11] + ' ' + (year - 1) + '">' + monthNames[11] + ' ' + (year - 1) + '</a>';
+				var prev_month = '<a href="?month=' + 12 + '&amp;year=' + (year - 1) + '" title="' + monthNames[11] + ' ' + (year - 1) + '"><i style="font-size:24px" class="fa">&#8678;</i></a>';
 			} else {
 				
-				var prev_month = '<a href="?month=' + (month) + '&amp;year=' + (year) + '" title="' + monthNames[month - 1] + ' ' + (year) + '">' + monthNames[month - 1] + ' ' + (year) + '</a>';
+				var prev_month = '<a href="?month=' + (month) + '&amp;year=' + (year) + '" title="' + monthNames[month - 1] + ' ' + (year) + '"><i style="font-size:24px" class="fa">&#8678;</i></a>';
 			}		
-			table += ('<h3 id="current-month">'+monthNames[month]+' '+year+'</h3>');
+			//table += ('<h3 id="current-month">'+monthNames[month]+' '+year+'</h3>');
+			
+
+			table += ('<table class="month-nav-row"><tr><th class="th-nav-prev" style="text-align: left; width:20%"><div class="nav-prev">'+ prev_month +'</div></th><th class="th-month-name" style="text-align: center; width:60%;"><h3 id="current-month">'+monthNames[month]+' '+year+'</h3></th><th class="th-nav-next" style="text-align: right; width:20%;"><div class="nav-next">'+ next_month +'</div></th></tr></table>');
 			// uncomment the following lines if you'd like to display calendar month based on 'month' and 'view' paramaters from the URL
-			//table += ('<div class="nav-prev">'+ prev_month +'</div>');
-			//table += ('<div class="nav-next">'+ next_month +'</div>');
+			// table += ('<div class="nav-prev">'+ prev_month +'</div>');
+			// table += ('<div class="nav-next">'+ next_month +'</div>');
 			table += ('<table class="calendar-month " ' +'id="calendar-month'+i+' " cellspacing="0">');	
 		
 			table += '<tr>';
@@ -71,12 +105,12 @@
             for (j=0;j<42;j++){
 			  
               if ((j<firstDay)){
-                table += ('<td class="other-month"><span class="day">'+ (prev_days-firstDay+j+1) +'</span></td>');
+                table += ('<td class="other-month popup" id="' + (prev_days-firstDay+j+1) + monthNames[month-1] + year + '"><span class="day">' + (prev_days-firstDay+j+1) + '</span></td>');
 			  } else if ((j>=firstDay+getDaysInMonth(month,year))) {
 				i = i+1;
-                table += ('<td class="other-month"><span class="day">'+ i +'</span></td>');			 
+                table += ('<td class="other-month popup" id="' + i + monthNames[month + 1] + year + '"><span class="day">'+ i +'</span></td>');			 
               }else{
-                table += ('<td class="current-month day'+(j-firstDay+1)+'"><span class="day">'+(j-firstDay+1)+'</span></td>');
+                table += ('<td class="current-month day' + (j-firstDay+1) +' popup"  id="' + (j-firstDay+1) + monthNames[month] + year + '"><span class="day">'+(j-firstDay+1)+'</span></td>');
               }
               if (j%7==6)  table += ('</tr>');
             }

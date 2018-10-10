@@ -88,6 +88,32 @@ header p{
 /* SINGLE MONTH CALENDAR
 	========================================================================*/
 
+.month-nav-row{
+  padding: 20px;
+  border: none;
+  width: 100%;
+}
+
+th.th-nav-prev, th.th-nav-next, th.th-month-name{
+  background: none;
+  color: black;
+  border: none;
+  padding: none;
+  margin: none;
+  color: #38686A;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+i.fa{
+  font-style: normal;
+  text-decoration: none;
+  color: #38686A;
+}
+
 .container{
   margin: 5px;
 }
@@ -96,6 +122,7 @@ h3{
   text-transform: uppercase;
   font-weight: 700;
   text-align: center;
+  margin: 0;
 }
 
 td, th {
@@ -227,8 +254,6 @@ tr:last-child > td:last-child{
 
 .popup{
     cursor: pointer;
-    display: inline-block;
-    font-weight: bold;
 }
 
 
@@ -236,9 +261,7 @@ tr:last-child > td:last-child{
 	=========================================================================*/
 @media only screen and (min-width: 500px){
 	body{
-		background: #C9EDDC;  /* fallback for old browsers */
-		background: -webkit-linear-gradient(to left, #D8D5DB, #C9EDDC);  /* Chrome 10-25, Safari 5.1-6 */
-		background: linear-gradient(to left, #D8D5DB, #C9EDDC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		background: #C9EDDC;
 	}	
 
   header{
@@ -278,8 +301,26 @@ tr:last-child > td:last-child{
   .weekletter{
     display: none;
   }
+
   table{
     width: 100%;
+    margin: 0 auto;
+    max-width: 1100px;
+  }
+  td {
+    width: 14.2957%;
+    position: relative;
+  }
+  td:after {
+    content: '';
+    display: block;
+    margin-top: 80%;
+  }
+  td .day {
+    position: absolute;
+    display: block;
+    top: 45%;
+    left: 45%;
   }
 }
 

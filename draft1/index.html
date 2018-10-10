@@ -17,13 +17,12 @@
         <script src="js/jquery-1.2.6.js"></script>
         <script src="js/jquery.calendar-widget.js"></script>
         <!-- NOTE: month 0 is January-->
+        
         <script type="text/javascript">
-        $(function()
-        {
-            $("#calendar").calendarWidget({
-                month: 1,
-                year: 2018                        
-            });
+        $(window).load(function(){
+            {
+                $("#calendar").calendarWidget();
+            }
         });
         </script>
         <!-- POPUP SCRIPT -->
@@ -59,7 +58,7 @@
             </div>
         </header>
 
-        <div class="container"
+        <div class="container">
         <!-- jquery single month calendar -->
             <div id="calendar">
                 <p>Please enable Javascript to view this calendar.</p>
