@@ -139,3 +139,9 @@
 
 
 })(jQuery);
+
+$(document).ready(function() {
+    {
+        $("#calendar").calendarWidget();
+    }
+});

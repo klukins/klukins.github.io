@@ -10,11 +10,7 @@
 //                });
 //             });
 
-$(window).load(function(){
-    {
-        $("#calendar").calendarWidget();
-    }
-});
+
 
 $(document).ready(function() {
    $.getJSON('http://gsx2json.com/api?id=1MdT_A4DPV6jHHLD-XTEqZt8y7KQSmyBvydy8f9CwlSY&columns=false', function(stuff) {
