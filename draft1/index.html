@@ -18,27 +18,26 @@
         <script src="js/jquery.calendar-widget.js"></script>
         <!-- NOTE: month 0 is January-->
         
-        <script type="text/javascript">
+<!--         <script type="text/javascript">
         $(window).load(function(){
             {
                 $("#calendar").calendarWidget();
             }
         });
-        </script>
+        </script> -->
         <!-- POPUP SCRIPT -->
-        <script type="text/javascript">
-        $(window).load(function () {
-            $(".popup").click(function(){
-               $('.hover').show();
-            });
-            $('.hover').click(function(){
+<!--         <script type="text/javascript">
+            
+            $(document).click(function(event) {
+              if (event.target.className.includes("popup")) {
+                $('.hover').show();
+              }
+              else {
                 $('.hover').hide();
+              }
             });
-            $('.popupCloseButton').click(function(){
-                $('.hover').hide();
-            });
-        });
-        </script>
+
+        </script> -->
 
     </head>
     <body>
@@ -68,13 +67,37 @@
         <!-- popup box for each day -->
         <div class="hover">
             <span class="clearfix helper"></span>
-            <div>
-                <div class="popupCloseButton"></div>
+            <div class="popup-box">
+                <div class="closeButton"></div>
                 <p>This is where Krissy is today!</p>
             </div>
         </div>
 
+<!--pasted-->
 
+<div class="results"></div> 
+
+<!-- <script>
+ 
+ // ID of the Google Spreadsheet
+ var spreadsheetID = "2PACX-1vQpBY_013yPwnAGxisrWmcFI_7al5SKhIKeagSFuEazTti-HhMOYXpAoISDImAbwb_aqpS7UZKkt8I3";
+
+ // Make sure it is public or set to Anyone with link can view 
+ var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
+
+ $.getJSON(url, function(data) {
+
+  var entry = data.feed.entry;
+
+  $(entry).each(function(){
+    // Column names are name, age, etc.
+    $('.results').prepend('<h2>'+this.gsx$city.$t+'</h2><p>'+this.gsx$day.$t+'</p>');
+  });
+
+ });
+
+</script> -->
+<!--end-->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>

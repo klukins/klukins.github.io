@@ -105,12 +105,12 @@
             for (j=0;j<42;j++){
 			  
               if ((j<firstDay)){
-                table += ('<td class="other-month popup" id="' + (prev_days-firstDay+j+1) + monthNames[month-1] + year + '"><span class="day">' + (prev_days-firstDay+j+1) + '</span></td>');
+                table += ('<td class="other-month popup" id="' + ('0' + (prev_days-firstDay+j+1)).slice(-2) + monthNames[prev_m] + prev_y + '"><span class="popupday day">' + (prev_days-firstDay+j+1) + '</span></td>');
 			  } else if ((j>=firstDay+getDaysInMonth(month,year))) {
 				i = i+1;
-                table += ('<td class="other-month popup" id="' + i + monthNames[month + 1] + year + '"><span class="day">'+ i +'</span></td>');			 
+                table += ('<td class="other-month popup" id="' + ('0' + i).slice(-2) + monthNames[month + 1] + year + '"><span class="popupday day">'+ i +'</span></td>');			 
               }else{
-                table += ('<td class="current-month day' + (j-firstDay+1) +' popup"  id="' + (j-firstDay+1) + monthNames[month] + year + '"><span class="day">'+(j-firstDay+1)+'</span></td>');
+                table += ('<td class="current-month day' + (j-firstDay+1) +' popup"  id="' + ('0' + (j-firstDay+1)).slice(-2) + monthNames[month] + year + '"><span class="popupday day">'+(j-firstDay+1)+'</span></td>');
               }
               if (j%7==6)  table += ('</tr>');
             }
@@ -135,5 +135,7 @@
 		calendarWidget(this, params);		
 		return this; 
 	}; 
+
+
 
 })(jQuery);

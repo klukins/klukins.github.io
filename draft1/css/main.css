@@ -24,7 +24,7 @@ Background gradient:
 /* GLOBAL
 	=========================================================================*/
 body{
-	background: #C9EDDC;
+	background: #ffffff;
 }
 /* TYPOGRAPHY
 	=========================================================================*/
@@ -51,7 +51,7 @@ header > div{
 }
 
 .globe{
-  background-image: url(../img/globe.png);
+  background-image: url(../img/bw-globe.png);
   background-size: contain;
   background-repeat: no-repeat;
   display: inline-block;
@@ -61,7 +61,7 @@ header > div{
 }
 
 .globe:hover{
-  background-image: url(../img/globe-color.png);
+  background-image: url(../img/bw-globe.gif);
 }
 
 header p{
@@ -187,6 +187,16 @@ tr:last-child > td:last-child{
   color: #999;
 }
 
+.not-home {
+  background: pink;
+  color: black;
+}
+
+.other-month.not-home {
+  background: #E0C1C7;
+}
+
+
 /* DAYS OF WEEK
   =========================================================================*/
 .fullweekday {
@@ -226,7 +236,7 @@ tr:last-child > td:last-child{
     padding: 15px 5%;
 }
 
-.popupCloseButton {
+.closeButton {
   position: absolute;
   right: 5px;
   top: 5px;
@@ -234,10 +244,10 @@ tr:last-child > td:last-child{
   height: 20px;
   opacity: 0.3;
 }
-.popupCloseButton:hover {
+.closeButton:hover {
   opacity: 1;
 }
-.popupCloseButton:before, .popupCloseButton:after {
+.closeButton:before, .closeButton:after {
   position: absolute;
   left: 10px;
   content: ' ';
@@ -245,10 +255,10 @@ tr:last-child > td:last-child{
   width: 2px;
   background-color: #333;
 }
-.popupCloseButton:before {
+.closeButton:before {
   transform: rotate(45deg);
 }
-.popupCloseButton:after {
+.closeButton:after {
   transform: rotate(-45deg);
 }
 
@@ -260,9 +270,6 @@ tr:last-child > td:last-child{
 /* FOR DESKTOP
 	=========================================================================*/
 @media only screen and (min-width: 500px){
-	body{
-		background: #C9EDDC;
-	}	
 
   header{
     text-align: center;
